@@ -172,3 +172,28 @@ nav {
 	height: 20vw;
 	background-size: 100%;
 }
+
+/* Pagina 4: weizer ---------------------------------------------------------*/
+#pagina4 p {
+	text-align: center;
+}
+#pagina4 img {
+	display: block;
+	position: absolute;
+	width: 50vmin;
+	height: 50vmin;
+	top: 30vmin;
+	left: 25vmin;
+}
+#afstand {
+	position: absolute;
+	width: 84vmin;
+	top: 52vmin;
+	color: blue;
+}
+#pagina4 #info {
+	position: absolute;
+	width: 84vmin;
+	top: 82vmin;
+	text-align: left;
+}

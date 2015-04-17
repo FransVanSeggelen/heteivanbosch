@@ -18,13 +18,12 @@ function initRecording() {
             case 'btnStart':
             //console.log('btnStart');
                 if(lastState == 'recording') {
+                    $('#btnStart').attr('class', 'btnRecord up');
                     stopRecording();
                 } else {
+                    $('#btnStart').attr('class', 'btnRecord down');
                     startRecording();
                 }
-
-                $('#btnStart').css({'background-color': '#e4087d', 'background-image': 'url("../img/icon/down_mic.svg")'});
-
                 break;
             case 'btnPlay':
             //console.log('btnPlay');

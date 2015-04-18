@@ -18,7 +18,7 @@ function onDeviceReady(){
 
 function hideAll() {
 	$('section').attr('class', 'hide');
-	$('.navbtn').attr('class', 'up');
+	$('nav div').attr('class', 'up');
 	clearGeo();
 }
 function pagina1Show() {

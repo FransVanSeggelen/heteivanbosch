@@ -109,7 +109,6 @@ nav div {
 	border-color: #f0f0f0;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 }
 #btnMic.down {background-image: url("../img/icon/down_mic.svg");}
 #btnKompas {background-image: url("../img/icon/up_kompas.svg"); left: 60vw;}

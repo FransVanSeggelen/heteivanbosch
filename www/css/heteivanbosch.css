@@ -123,28 +123,25 @@ nav div {
 .hide {display: none;}
 
 /* Pagina 3: recording ------------------------------------------------------*/
-.btnRecord {
+#pagina3 p {
+	text-align: center;
+}
+
+#btnStart {
 	width: 44vmin;
 	height: 44vmin;
 	border-radius: 25vmin;
 	background-size: 60vmin;
 	background-repeat: no-repeat;
 	background-position: center;
-}
-
-#btnStart {
 	margin: 3vh auto;
 	background-image: url("../img/icon/up_mic.svg");
 	border: 3vmin solid #f0f0f0;
 }
-
-.down#btnStart {
+#btnStart.down {
 	background-image: url("../img/icon/down_mic.svg");
 }
 
-#pagina3 p {
-	text-align: center;
-}
 #textSecondsLeft {
 	font-size: 6vh;
 }
@@ -154,6 +151,8 @@ nav div {
 	height: 17vmin;
 	border-radius: 10vmin;
 	background-size: 17vmin;
+	background-repeat: no-repeat;
+	background-position: center;
 	border: 1.5vmin solid #f0f0f0;
 }
 #btnPlay {
@@ -164,10 +163,10 @@ nav div {
 	float: right;
 	background-image: url("../img/icon/record_send.svg");
 }
-.down#btnPlay {
+#btnPlay.down {
 	background-image: url("../img/icon/record_pause.svg");
 }
-.down#btnSend {
+#btnSend.down {
 	background-image: url("../img/icon/record_sending.svg");
 }
 

@@ -110,7 +110,11 @@ nav div {
 	border-bottom: 0;
 	border-radius: 3vh 3vh 0 0;
 }
-#btnMic.down {background-image: url("../img/icon/down_mic.svg");}
+#btnMic.down {background-image: url("../img/icon/down_mic.svg");
+	border: 1vh solid #f0f0f0;
+	border-bottom: 0;
+	border-radius: 3vh 3vh 0 0;
+}
 #btnKompas {background-image: url("../img/icon/up_kompas.svg"); left: 60vw;}
 #btnKompas.down {background-image: url("../img/icon/down_kompas.svg");}
 #btnColofon {background-image: url("../img/icon/up_colofon.svg"); left: 80vw;}

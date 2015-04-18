@@ -85,7 +85,6 @@ nav {
 }
 
 nav div {
-	display: block;
 	position: fixed;
 	bottom: 0;
 	height: 10vh;

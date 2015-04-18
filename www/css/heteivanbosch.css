@@ -116,7 +116,7 @@ nav div {
 #btnColofon {background-image: url("../img/icon/up_colofon.svg"); left: 80vw;}
 #btnColofon.down {background-image: url("../img/icon/down_colofon.svg");}
 
-.down {background-color: blue;}
+.down {background-color: #e4087d;}
 .up   {background-color: #f0f0f0;}
 
 .show {display: block;}

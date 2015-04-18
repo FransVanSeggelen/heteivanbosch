@@ -3,7 +3,7 @@ var secondsRecorded = 0;
 var maxSeconds = 15;
 var interval;
 var lastState;
-var filename = 'myRecording.mp3';
+var filename = 'myRecording';
 var uploadURL = 'http://shinefestival.herokuapp.com';
 
 function initRecording() {
@@ -18,10 +18,10 @@ function initRecording() {
             case 'btnStart':
             //console.log('btnStart');
                 if(lastState == 'recording') {
-                    $('#btnStart').attr('class', 'btnRecord up');
+                    $('#btnStart').attr('class', 'up');
                     stopRecording();
                 } else {
-                    $('#btnStart').attr('class', 'btnRecord down');
+                    $('#btnStart').attr('class', 'down');
                     startRecording();
                 }
                 break;

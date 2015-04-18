@@ -101,7 +101,7 @@ nav div {
 #btnShine {background-image: url("../img/icon/up_shine.svg"); left: 20vw;}
 #btnShine.down {background-image: url("../img/icon/down_shine.svg");}
 #btnMic {background-image: url("../img/icon/up_mic.svg"); left: 40vw;
-	background-size: 13vh;
+	background-size: 3vh;
 	height: 13vh;
 	border-radius: 3vh 3vh 0 0;
 	border-width: 1.5vw 1.5vw 0;
@@ -109,6 +109,7 @@ nav div {
 	border-color: #f0f0f0;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 #btnMic.down {background-image: url("../img/icon/down_mic.svg");}
 #btnKompas {background-image: url("../img/icon/up_kompas.svg"); left: 60vw;}

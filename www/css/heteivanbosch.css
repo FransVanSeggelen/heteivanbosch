@@ -103,9 +103,10 @@ nav div {
 #btnMic {background-image: url("../img/icon/up_mic.svg"); left: 40vw;
 	background-size: 13vh;
 	height: 13vh;
-	border: 1vh solid #f0f0f0;
-	border-bottom: 0;
 	border-radius: 3vh 3vh 0 0;
+	border-width: 1.5vw 1.5vw 0;
+	border-style: solid;
+	border-color: #f0f0f0;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;

@@ -18,34 +18,34 @@ function onDeviceReady(){
 
 function hideAll() {
 	$('section').attr('class', 'hide');
-	$('.navbtn').attr('class', 'navbtn up');
+	$('.navbtn').attr('class', 'up');
 	clearGeo();
 }
 function pagina1Show() {
 	hideAll();
 	$('#pagina1').attr('class', 'show');
-	$('#btnEi').attr('class', 'navbtn down');
+	$('#btnEi').attr('class', 'down');
 };
 function pagina2Show() {
 	hideAll();
 	$('#pagina2').attr('class', 'show');
-	$('#btnShine').attr('class', 'navbtn down');
+	$('#btnShine').attr('class', 'down');
 };
 function pagina3Show() {
 	hideAll();
 	$('#pagina3').attr('class', 'show');
-	$('#btnMic').attr('class', 'navbtn down');
+	$('#btnMic').attr('class', 'down');
 };
 function pagina4Show() {
 	hideAll();
 	$('#pagina4').attr('class', 'show');
-	$('#btnKompas').attr('class', 'navbtn down');
+	$('#btnKompas').attr('class', 'down');
 	watchGeo();
 };
 function pagina5Show() {
 	hideAll();
 	$('#pagina5').attr('class', 'show');
-	$('#btnColofon').attr('class', 'navbtn down');
+	$('#btnColofon').attr('class', 'down');
 };
 
 // Pagina4: kompas en w-ei-zer functies ---------------------------------------

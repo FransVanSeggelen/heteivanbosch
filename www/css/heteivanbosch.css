@@ -84,7 +84,7 @@ nav {
 	height: 12vh;
 }
 
-.navbtn {
+nav div {
 	display: block;
 	position: fixed;
 	bottom: 0;
@@ -97,28 +97,24 @@ nav {
 }
 
 #btnEi {background-image: url("../img/icon/up_ei.svg"); left: 0vw;}
+#btnEi.down {background-image: url("../img/icon/down_ei.svg");}
 #btnShine {background-image: url("../img/icon/up_shine.svg"); left: 20vw;}
-#btnMic {
-	background-image: url("../img/icon/up_mic.svg");
+#btnShine.down {background-image: url("../img/icon/down_shine.svg");}
+#btnMic {background-image: url("../img/icon/up_mic.svg"); left: 40vw;
 	background-size: 13vh;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	height: 13vh;
-	width: 20vw;
 	border: 1vh solid #f0f0f0;
 	border-bottom: 0;
 	border-radius: 3vh 3vh 0 0;
-	left: 40vw;
 }
+#btnMic.down {background-image: url("../img/icon/down_mic.svg");}
 #btnKompas {background-image: url("../img/icon/up_kompas.svg"); left: 60vw;}
+#btnKompas.down {background-image: url("../img/icon/down_kompas.svg");}
 #btnColofon {background-image: url("../img/icon/up_colofon.svg"); left: 80vw;}
-
-.down#btnEi {background-image: url("../img/icon/down_ei.svg");}
-.down#btnShine {background-image: url("../img/icon/down_shine.svg");}
-.down#btnMic {background-image: url("../img/icon/down_mic.svg");}
-.down#btnKompas {background-image: url("../img/icon/down_kompas.svg");}
-.down#btnColofon {background-image: url("../img/icon/down_colofon.svg");}
+#btnColofon.down {background-image: url("../img/icon/down_colofon.svg");}
 
 .down {background-color: #e4087d;}
 .up   {background-color: #f0f0f0;}
@@ -130,7 +126,7 @@ nav {
 .btnRecord {
 	width: 44vmin;
 	height: 44vmin;
-	border-radius: 44vmin;
+	border-radius: 25vmin;
 	background-size: 60vmin;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -156,6 +152,7 @@ nav {
 #btnPlay, #btnSend {
 	width: 17vmin;
 	height: 17vmin;
+	border-radius: 10vmin;
 	background-size: 17vmin;
 	border: 1.5vmin solid #f0f0f0;
 }

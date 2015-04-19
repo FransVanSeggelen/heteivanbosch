@@ -18,7 +18,7 @@ function initRecording() {
         switch ($(this).attr('id'))
         {
             case 'btnStart':
-            console.log('btnStart');
+                console.log('btnStart');
                 if(lastState == 'recording') {
                     $('#btnStart').attr('class', 'up');
                     stopRecording();
@@ -28,11 +28,11 @@ function initRecording() {
                 }
                 break;
             case 'btnPlay':
-            console.log('btnPlay');
+                console.log('btnPlay');
                 playRecordedFile();
                 break;
             case 'btnSend':
-            console.log('btnSend');
+                console.log('btnSend');
                 sendRecordedFile();
                 break;
         }
@@ -98,6 +98,8 @@ function playRecordedFile(){
     if(lastState != 'playing') {
         updateCurrentState('playing');
         media = createMedia();
+        media.getCurrentPosition(function(pos){alert(pos + ' sec');});
+        alert(media.getDuration());
         media.play();
     }
 }
@@ -123,10 +125,11 @@ function sendRecordedFile(){
             var ft = new FileTransfer();
             ft.upload(fileEntry.toURL(), uploadURL, 
                 function(res){
-                    $('#textSendStatus').html('Verzonden!');
+                    alert('Yip, die is weg');
+//                    $('#textSendStatus').html('Verzonden!');
                 }, function(err){
                     alert('oh no!');
-                    $('#textSendStatus').html(err.body);
+//                    $('#textSendStatus').html(err.body);
                 }, options);
         });
     });

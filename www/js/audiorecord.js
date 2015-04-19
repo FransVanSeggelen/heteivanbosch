@@ -126,13 +126,16 @@ function sendRecordedFile(){
     console.log('type: ' + filetype);
     alert('temp: ' + LocalFileSystem.TEMPORARY + '\npers: ' + LocalFileSystem.PERSISTENT + '\npath: ' + filepath + '\nname: ' + filename + '\ntype: ' + filetype);
     window.requestFileSystem(filepath, 0, function (fileSystem) {
+        console.log('Tussen request en get');
         fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
+            console.log('Na get');
             var options = new FileUploadOptions();
             options.fileKey = "recordedAudio";
             options.fileName = filename;
             options.mimeType = filetype;
             options.chunkedMode = false;
 
+            console.log('Net voor ft');
             var ft = new FileTransfer();
             ft.upload(fileEntry.toURL(), uploadURL, 
                 function(res){

@@ -30,7 +30,7 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="android-minSdkVersion" value="4.4.4" />
     <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="auto-hide-splash-screen" value="false" />
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="2500" />
 

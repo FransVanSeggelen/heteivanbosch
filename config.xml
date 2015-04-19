@@ -20,19 +20,16 @@
 <!-- Preferences -->
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
-    <preference name="target-device" value="universal" />
+    <preference name="target-device" value="handset" />
     <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="false" />
+    <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
-    <preference name="ios-statusbarstyle" value="black-translucent" />
     <preference name="detect-data-types" value="false" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="android-minSdkVersion" value="4.4.4" />
-    <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="false" />
     <preference name="SplashScreen" value="splash" />
-    <preference name="SplashScreenDelay" value="2500" />
+    <preference name="SplashScreenDelay" value="2000" />
 
 <!-- Plug-ins -->
     <gap:plugin name="org.apache.cordova.media" />

@@ -107,7 +107,7 @@ function sendRecordedFile(){
     updateCurrentState('idle');
     $('#textSendStatus').html('uploading...');
 
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
+    window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, function (fileSystem) {
         fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
             var options = new FileUploadOptions();
             options.fileKey = "recordedAudio";

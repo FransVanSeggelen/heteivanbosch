@@ -10,8 +10,8 @@ function initRecording() {
     console.log('initRecording');
     updateCurrentState('idle');
     updateSecondsRecordedUI();
-    if(isMobile.Android) filename += '.amr';
-    if(isMobile.iOS) filename += '.wav';
+    if(isMobile.Android()) filename += '.amr';
+    if(isMobile.iOS()) filename += '.wav';
 
     $('#pagina3 div').on('click', function(e){
         console.log('preSwitch');

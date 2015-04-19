@@ -16,7 +16,7 @@
 	font-family: "Fira Sans";
 	font-size: 3.5vh;
 	font-weight: 300;
-	line-height: 4.5vh;
+	line-height: 4.8vh;
 	color: #f0f0f0;
 }
 
@@ -54,13 +54,11 @@ h1 {
 h2 {
 	font-weight: 500;
 	font-size: 4vh;
-	line-height: 6vh;
 }
 
 h3 {
 	font-weight: 500;
 	font-size: 3.5vh;
-	line-height: 5vh;
 }
 
 section {
@@ -172,7 +170,7 @@ nav div {
 
 /* Pagina 4: weizer ---------------------------------------------------------*/
 #pagina4 p {
-	text-align: left;
+	text-align: center;
 }
 #pagina4 div {
 	position: relative;

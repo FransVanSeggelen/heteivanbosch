@@ -122,7 +122,9 @@ function sendRecordedFile(){
     console.log('temp: ' + LocalFileSystem.TEMPORARY);
     console.log('pers: ' + LocalFileSystem.PERSISTENT);
     console.log('path: ' + filepath);
-    alert('temp: ' + LocalFileSystem.TEMPORARY + '\npers: ' + LocalFileSystem.PERSISTENT + '\npath: ' + filepath)
+    console.log('name: ' + filename);
+    console.log('type: ' + filetype);
+    alert('temp: ' + LocalFileSystem.TEMPORARY + '\npers: ' + LocalFileSystem.PERSISTENT + '\npath: ' + filepath + '\nname: ' + filename + '\ntype: ' + filetype);
     window.requestFileSystem(filepath, 0, function (fileSystem) {
         fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
             var options = new FileUploadOptions();

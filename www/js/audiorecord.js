@@ -3,13 +3,15 @@ var secondsRecorded = 0;
 var maxSeconds = 15;
 var interval;
 var lastState;
-var filename = 'myRecording';
+var filename = 'heteivanbosch';
 var uploadURL = 'http://shinefestival.herokuapp.com';
 
 function initRecording() {
     console.log('initRecording');
     updateCurrentState('idle');
     updateSecondsRecordedUI();
+    if(isMobile.Android) filename += '.amr';
+    if(isMobile.iOS) filename += '.wav';
 
     $('#pagina3 div').on('click', function(e){
         console.log('preSwitch');
@@ -136,7 +138,6 @@ function updateCurrentState(status){
     switch (status){
         case 'idle':
             $('#btnStart').prop('disabled', false);
-            $('#btnStop').prop('disabled', true);
             $('#btnPlay').prop('disabled', true);
             $('#btnSend').prop('disabled', true);
             break;
@@ -152,7 +153,7 @@ function updateCurrentState(status){
             break;
         case 'playing':
             $('#btnStart').prop('disabled', true);
-            $('#btnPlay').prop('disabled', true);
+            $('#btnPlay').prop('disabled', false);
             $('#btnSend').prop('disabled', true);
             break;
     }

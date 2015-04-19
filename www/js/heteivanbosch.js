@@ -64,7 +64,6 @@ function pagina5Show() {
 
 // Pagina4: kompas en w-ei-zer functies ---------------------------------------
 function clearGeo(){
-	console.log('clearGeo');
 	navigator.geolocation.clearWatch(geoObject);
 	navigator.compass.clearWatch(comObject);
 	$('#kompas').css({transform: 'rotateZ(0deg)'});
@@ -74,7 +73,6 @@ function clearGeo(){
 	$('#com').html('');
 };
 function watchGeo(){
-	console.log('watchGeo');
 	var geoOptions = { maximumAge: 0, timeout: 5000 , enableHighAccuracy:true};
 	geoObject = navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
 	var comOptions = { frequency: 100 }; // either set frequency or filter (= deviation)
@@ -141,7 +139,6 @@ function comSuccess(heading){
 	// $('#com').html(comText);
 }
 function comError(error){
-	clearGeo();
 	var msg = 'Controleer of plaatsbepaling op jouw smartphone AAN staat en dat je een goed bereik hebt.'
 			+ '\n(' + error.code + ': ' + error.message + ')';
 	navigator.notification.alert(msg, alertCB, 'Kompas fout', 'Oops');

@@ -1,10 +1,24 @@
+// Globale variabelen
+var isMobile = false;
 var geoObject;
 var comObject;
 var myHeading = 0;
 
+// Wait for device to be ready loading everything
 function loadScript() {
-	//document.addEventListener('deviceready', onDeviceReady);
-	onDeviceReady();
+	isMobile = {
+		Android: function() { return navigator.userAgent.match(/Android/i); }, 
+		BlackBerry: function() { return navigator.userAgent.match(/BlackBerry/i); }, 
+		iOS: function() { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, 
+		Opera: function() { return navigator.userAgent.match(/Opera Mini/i); }, 
+		Windows: function() { return navigator.userAgent.match(/IEMobile/i); }, 
+		any: function() { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
+	};
+	if (isMobile.any()) {
+		document.addEventListener('deviceready', onDeviceReady, false);
+	} else {
+		onDeviceReady();
+	};
 };
 
 function onDeviceReady(){
@@ -18,39 +32,38 @@ function onDeviceReady(){
 
 function hideAll() {
 	$('section').attr('class', 'hide');
-	$('.navbtn').attr('class', 'navbtn up');
+	$('nav div').attr('class', 'up');
 	clearGeo();
 }
 function pagina1Show() {
 	hideAll();
 	$('#pagina1').attr('class', 'show');
-	$('#btnEi').attr('class', 'navbtn down');
+	$('#btnEi').attr('class', 'down');
 };
 function pagina2Show() {
 	hideAll();
 	$('#pagina2').attr('class', 'show');
-	$('#btnShine').attr('class', 'navbtn down');
+	$('#btnShine').attr('class', 'down');
 };
 function pagina3Show() {
 	hideAll();
 	$('#pagina3').attr('class', 'show');
-	$('#btnMic').attr('class', 'navbtn down');
+	$('#btnMic').attr('class', 'down');
 };
 function pagina4Show() {
 	hideAll();
 	$('#pagina4').attr('class', 'show');
-	$('#btnKompas').attr('class', 'navbtn down');
+	$('#btnKompas').attr('class', 'down');
 	watchGeo();
 };
 function pagina5Show() {
 	hideAll();
 	$('#pagina5').attr('class', 'show');
-	$('#btnColofon').attr('class', 'navbtn down');
+	$('#btnColofon').attr('class', 'down');
 };
 
 // Pagina4: kompas en w-ei-zer functies ---------------------------------------
 function clearGeo(){
-	console.log('clearGeo');
 	navigator.geolocation.clearWatch(geoObject);
 	navigator.compass.clearWatch(comObject);
 	$('#kompas').css({transform: 'rotateZ(0deg)'});
@@ -60,7 +73,6 @@ function clearGeo(){
 	$('#com').html('');
 };
 function watchGeo(){
-	console.log('watchGeo');
 	var geoOptions = { maximumAge: 0, timeout: 5000 , enableHighAccuracy:true};
 	geoObject = navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
 	var comOptions = { frequency: 100 }; // either set frequency or filter (= deviation)
@@ -123,11 +135,10 @@ function comSuccess(heading){
 	myHeading = -heading.trueHeading;
 	$('#kompas').css({transform: 'rotateZ(' + myHeading + 'deg)'});
 	// var comText  = 'Magnetic heading: ' + heading.magneticHeading;
-	// comText += '<br>trueHeading: ' + heading.trueHeading;
+	// 	comText += '<br>trueHeading: ' + heading.trueHeading;
 	// $('#com').html(comText);
 }
 function comError(error){
-	clearGeo();
 	var msg = 'Controleer of plaatsbepaling op jouw smartphone AAN staat en dat je een goed bereik hebt.'
 			+ '\n(' + error.code + ': ' + error.message + ')';
 	navigator.notification.alert(msg, alertCB, 'Kompas fout', 'Oops');

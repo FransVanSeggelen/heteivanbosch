@@ -25,7 +25,7 @@ function initRecording() {
 
     $('#pagina3 div').on('click', function(e){
         console.log('preSwitch');
-        if(!($(this).hasClass('not')){
+        if(!($(this).hasClass('not'))) {
             switch ($(this).attr('id'))
             {
                 case 'btnStart':

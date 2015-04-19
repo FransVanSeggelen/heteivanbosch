@@ -3,8 +3,8 @@ var comObject;
 var myHeading = 0;
 
 function loadScript() {
-	document.addEventListener('deviceready', onDeviceReady);
-	// onDeviceReady();
+	//document.addEventListener('deviceready', onDeviceReady);
+	onDeviceReady();
 };
 
 function onDeviceReady(){
@@ -123,7 +123,7 @@ function comSuccess(heading){
 	myHeading = -heading.trueHeading;
 	$('#kompas').css({transform: 'rotateZ(' + myHeading + 'deg)'});
 	// var comText  = 'Magnetic heading: ' + heading.magneticHeading;
-	// 	comText += '<br>trueHeading: ' + heading.trueHeading;
+	// comText += '<br>trueHeading: ' + heading.trueHeading;
 	// $('#com').html(comText);
 }
 function comError(error){

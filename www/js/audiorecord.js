@@ -11,7 +11,7 @@ function initRecording() {
     updateCurrentState('idle');
     updateSecondsRecordedUI();
 
-    $('.btnRecord').on('click', function(e){
+    $('#pagina3 div').on('click', function(e){
         console.log('preSwitch');
         switch ($(this).attr('id'))
         {

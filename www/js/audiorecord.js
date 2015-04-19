@@ -9,7 +9,7 @@ var filepath = LocalFileSystem.PERSISTENT;
 var uploadURL = 'http://shinefestival.herokuapp.com';
 
 function initRecording() {
-    console.log('initRecording');
+    console.log('initRecording' + uploadURL);
     updateCurrentState('idle');
     updateSecondsRecordedUI();
     if(isMobile.Android()) {

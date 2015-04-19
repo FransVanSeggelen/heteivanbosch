@@ -20,10 +20,8 @@ function initRecording() {
             case 'btnStart':
                 console.log('btnStart');
                 if(lastState == 'recording') {
-                    $('#btnStart').attr('class', 'up');
                     stopRecording();
                 } else {
-                    $('#btnStart').attr('class', 'down');
                     startRecording();
                 }
                 break;
@@ -107,7 +105,7 @@ function playRecordedFile(){
 function sendRecordedFile(){
     console.log('sendRecordedFile');
     updateCurrentState('idle');
-    $('#textSendStatus').html('uploading...');
+    $('#textSecondsLeft').html('Verzenden...');
 
     window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, function (fileSystem) {
         fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
@@ -125,11 +123,9 @@ function sendRecordedFile(){
             var ft = new FileTransfer();
             ft.upload(fileEntry.toURL(), uploadURL, 
                 function(res){
-                    alert('Yip, die is weg');
-//                    $('#textSendStatus').html('Verzonden!');
+                    $('#textSecondsLeft').html('Verzonden!');
                 }, function(err){
-                    alert('oh no!');
-//                    $('#textSendStatus').html(err.body);
+                    $('#textSecondsLeft').html('Oops, mislukt.');
                 }, options);
         });
     });
@@ -141,23 +137,42 @@ function updateCurrentState(status){
     switch (status){
         case 'idle':
             $('#btnStart').prop('disabled', false);
+            $('#btnStart').attr('class', 'up');
             $('#btnPlay').prop('disabled', true);
+            $('#btnPlay').attr('class', 'not');
             $('#btnSend').prop('disabled', true);
+            $('#btnSend').attr('class', 'not');
             break;
         case 'recorded':
             $('#btnStart').prop('disabled', false);
+            $('#btnStart').attr('class', 'up');
             $('#btnPlay').prop('disabled', false);
+            $('#btnPlay').attr('class', 'up');
             $('#btnSend').prop('disabled', false);
+            $('#btnSend').attr('class', 'up');
             break;
         case 'recording':
             $('#btnStart').prop('disabled', false);
+            $('#btnStart').attr('class', 'up');
             $('#btnPlay').prop('disabled', true);
+            $('#btnPlay').attr('class', 'not');
             $('#btnSend').prop('disabled', true);
+            $('#btnSend').attr('class', 'not');
             break;
         case 'playing':
             $('#btnStart').prop('disabled', true);
+            $('#btnStart').attr('class', 'not');
             $('#btnPlay').prop('disabled', false);
             $('#btnSend').prop('disabled', true);
+            $('#btnSend').attr('class', 'not');
+            break;
+        case 'sending':
+            $('#btnStart').prop('disabled', true);
+            $('#btnStart').attr('class', 'not');
+            $('#btnPlay').prop('disabled', true);
+            $('#btnPlay').attr('class', 'up');
+            $('#btnSend').prop('disabled', true);
+            $('#btnSend').attr('class', 'not');
             break;
     }
 }

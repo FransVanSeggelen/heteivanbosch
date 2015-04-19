@@ -116,6 +116,7 @@ nav div {
 
 .down {background-color: #e4087d;}
 .up   {background-color: #f0f0f0;}
+.not  {background-color: #666666;}
 
 .show {display: block;}
 .hide {display: none;}

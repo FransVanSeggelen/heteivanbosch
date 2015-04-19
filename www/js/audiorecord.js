@@ -9,7 +9,6 @@ var filepath = 0;
 var uploadURL = 'http://shinefestival.herokuapp.com';
 
 function initRecording() {
-    console.log('initRecording: ' + uploadURL);
     updateCurrentState('idle');
     updateSecondsRecordedUI();
     if(isMobile.Android()) {
@@ -24,12 +23,10 @@ function initRecording() {
     }
 
     $('#pagina3 div').on('click', function(e){
-        console.log('preSwitch');
         if(!($(this).hasClass('not'))) {
             switch ($(this).attr('id'))
             {
                 case 'btnStart':
-                    console.log('btnStart');
                     if(lastState == 'recording') {
                         stopRecording();
                     } else {
@@ -37,11 +34,9 @@ function initRecording() {
                     }
                     break;
                 case 'btnPlay':
-                    console.log('btnPlay');
                     playRecordedFile();
                     break;
                 case 'btnSend':
-                    console.log('btnSend');
                     sendRecordedFile();
                     break;
             }
@@ -50,14 +45,12 @@ function initRecording() {
 };
 
 function startRecording(){
-    console.log('startRecording');
     updateCurrentState('recording');
     media = createMedia();
     media.startRecord();
     interval = setInterval(function(){
         secondsRecorded++;
         updateSecondsRecordedUI();
-
         if(secondsRecorded >= maxSeconds){
             stopRecording();
         }
@@ -72,30 +65,28 @@ function createMedia(){
                 updateCurrentState('recorded');
             }
         }, 
-        function(err){
-            alert(err.message); 
+        function(error){
+            var msg = 'Het Ei kan media niet gebruiken.'
+                    + '\n(' + error.code + ': ' + error.message + ')';
+            navigator.notification.alert(msg, alertCB, 'Media fout', 'Sorry');
+            console.log('mediaError: ' + error.code + '=\n' + error.message);
         }
     );
 };
 
 function updateSecondsRecordedUI(){
-    console.log('updateSecondsRecordedUI');
     var secondsLeft = maxSeconds - secondsRecorded;
     var text = (secondsLeft < 10 ? '0' : '') + secondsLeft;
     $('#textSecondsLeft').html('00:' + text);
 }
 
 function stopRecording(){
-    console.log('stopRecording');
     if(interval){
         clearInterval(interval);
     }
-
     updateCurrentState('recorded');
-
     secondsRecorded = 0;
     updateSecondsRecordedUI();
-
     if(media){
         media.stopRecord();
         media.release();
@@ -104,41 +95,28 @@ function stopRecording(){
 }
 
 function playRecordedFile(){
-    console.log('playRecordedFile');
     if(lastState != 'playing') {
         updateCurrentState('playing');
         media = createMedia();
-        media.getCurrentPosition(function(pos){console.log(pos + ' sec');});
-        console.log(media.getDuration());
+        // media.getCurrentPosition(function(pos){console.log(pos + ' sec');});
+        // console.log(media.getDuration());
         media.play();
     }
 }
 
 function sendRecordedFile(){
-    console.log('sendRecordedFile');
     updateCurrentState('sending');
     $('#textSecondsLeft').html('Verzenden...');
 
-    console.log('temp: ' + LocalFileSystem.TEMPORARY);
-    console.log('pers: ' + LocalFileSystem.PERSISTENT);
-    console.log('path: ' + filepath);
-    console.log('name: ' + filename);
-    console.log('type: ' + filetype);
-    alert('temp: ' + LocalFileSystem.TEMPORARY + '\npers: ' + LocalFileSystem.PERSISTENT + '\npath: ' + filepath + '\nname: ' + filename + '\ntype: ' + filetype);
     window.requestFileSystem(filepath, 0, function (fileSystem) {
-        console.log('Tussen request en get');
         fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
-            console.log('Na get');
             var options = new FileUploadOptions();
             options.fileKey = "recordedAudio";
             options.fileName = filename;
             options.mimeType = filetype;
             options.chunkedMode = false;
 
-            console.log('Net voor ft');
             var ft = new FileTransfer();
-            console.log('Net voor upload1:' + fileEntry.toURL());
-            console.log('Net voor upload2:' + uploadURL);
             ft.upload(fileEntry.toURL(), uploadURL, 
                 function(res){
                     $('#textSecondsLeft').html('Verzonden!');
@@ -152,7 +130,6 @@ function sendRecordedFile(){
 }
 
 function updateCurrentState(status){
-    console.log('updateCurrentState');
     lastState = status;
     switch (status){
         case 'idle':

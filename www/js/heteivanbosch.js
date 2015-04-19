@@ -73,7 +73,7 @@ function clearGeo(){
 	$('#com').html('');
 };
 function watchGeo(){
-	var geoOptions = { maximumAge: 0, timeout: 5000 , enableHighAccuracy:true};
+	var geoOptions = { maximumAge: 0, timeout: 5000, enableHighAccuracy:true};
 	geoObject = navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
 	var comOptions = { frequency: 100 }; // either set frequency or filter (= deviation)
 	comObject = navigator.compass.watchHeading(comSuccess, comError, comOptions);
@@ -125,7 +125,6 @@ function toDegrees(radians) {
 	return radians * 180/Math.PI;
 }
 function geoError(error){
-	clearGeo();
 	var msg = 'Controleer of plaatsbepaling op jouw smartphone AAN staat en dat je een goed bereik hebt.'
 			+ '\n(' + error.code + ': ' + error.message + ')';
 	navigator.notification.alert(msg, alertCB, 'Locatie fout', 'Oops');

@@ -107,28 +107,46 @@ function sendRecordedFile(){
     updateCurrentState('idle');
     $('#textSecondsLeft').html('Verzenden...');
 
-    window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, function (fileSystem) {
-        fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
-            var options = new FileUploadOptions();
-            options.fileKey = "recordedAudio";
-            options.fileName = filename;
-            if(isMobile.Android){
-                options.mimeType = 'audio/amr';
-            }
-            if(isMobile.iOS){
+    console.log('-->temp: ' + LocalFileSystem.TEMPORARY);
+    console.log('-->pers: ' + LocalFileSystem.PERSISTENT);
+    if(isMobile.iOS){
+        window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, function (fileSystem) {
+            fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
+                var options = new FileUploadOptions();
+                options.fileKey = "recordedAudio";
+                options.fileName = filename;
                 options.mimeType = 'audio/wav';
-            }
-            options.chunkedMode = false;
+                options.chunkedMode = false;
 
-            var ft = new FileTransfer();
-            ft.upload(fileEntry.toURL(), uploadURL, 
-                function(res){
-                    $('#textSecondsLeft').html('Verzonden!');
-                }, function(err){
-                    $('#textSecondsLeft').html('Oops, mislukt.');
-                }, options);
+                var ft = new FileTransfer();
+                ft.upload(fileEntry.toURL(), uploadURL, 
+                    function(res){
+                        $('#textSecondsLeft').html('Verzonden!');
+                    }, function(err){
+                        $('#textSecondsLeft').html('Oops, mislukt.');
+                    }, options);
+            });
         });
-    });
+    }
+    if(isMobile.Android){
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
+            fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
+                var options = new FileUploadOptions();
+                options.fileKey = "recordedAudio";
+                options.fileName = filename;
+                options.mimeType = 'audio/amr';
+                options.chunkedMode = false;
+
+                var ft = new FileTransfer();
+                ft.upload(fileEntry.toURL(), uploadURL, 
+                    function(res){
+                        $('#textSecondsLeft').html('Verzonden!');
+                    }, function(err){
+                        $('#textSecondsLeft').html('Oops, mislukt.');
+                    }, options);
+            });
+        });
+    }
 }
 
 function updateCurrentState(status){
@@ -163,6 +181,7 @@ function updateCurrentState(status){
             $('#btnStart').prop('disabled', true);
             $('#btnStart').attr('class', 'not');
             $('#btnPlay').prop('disabled', false);
+            $('#btnPlay').attr('class', 'up');
             $('#btnSend').prop('disabled', true);
             $('#btnSend').attr('class', 'not');
             break;
@@ -170,7 +189,7 @@ function updateCurrentState(status){
             $('#btnStart').prop('disabled', true);
             $('#btnStart').attr('class', 'not');
             $('#btnPlay').prop('disabled', true);
-            $('#btnPlay').attr('class', 'up');
+            $('#btnPlay').attr('class', 'not');
             $('#btnSend').prop('disabled', true);
             $('#btnSend').attr('class', 'not');
             break;

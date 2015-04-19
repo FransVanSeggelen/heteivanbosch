@@ -110,7 +110,12 @@ function sendRecordedFile(){
             var options = new FileUploadOptions();
             options.fileKey = "recordedAudio";
             options.fileName = filename;
-            options.mimeType = 'audio/mpeg';
+            if(isMobile.Android){
+                options.mimeType = 'audio/amr';
+            }
+            if(isMobile.iOS){
+                options.mimeType = 'audio/wav';
+            }
             options.chunkedMode = false;
 
             var ft = new FileTransfer();

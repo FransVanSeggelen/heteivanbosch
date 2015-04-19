@@ -22,12 +22,13 @@
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="handset" />
     <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
+    <preference name="webviewbounce" value="false" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
     <preference name="detect-data-types" value="false" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="android-minSdkVersion" value="4.4.4" />
+    <preference name="show-splash-screen-spinner" value="false" />
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="2000" />
 

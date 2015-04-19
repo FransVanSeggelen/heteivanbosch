@@ -5,11 +5,11 @@ var interval;
 var lastState;
 var filename = 'heteivanbosch';
 var filetype = 'audio/';
-var filepath = LocalFileSystem.PERSISTENT;
+var filepath = 0;
 var uploadURL = 'http://shinefestival.herokuapp.com';
 
 function initRecording() {
-    console.log('initRecording' + uploadURL);
+    console.log('initRecording: ' + uploadURL);
     updateCurrentState('idle');
     updateSecondsRecordedUI();
     if(isMobile.Android()) {

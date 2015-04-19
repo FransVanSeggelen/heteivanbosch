@@ -119,6 +119,10 @@ function sendRecordedFile(){
     updateCurrentState('sending');
     $('#textSecondsLeft').html('Verzenden...');
 
+    console.log('temp: ' + LocalFileSystem.TEMPORARY);
+    console.log('pers: ' + LocalFileSystem.PERSISTENT);
+    console.log('path: ' + filepath);
+    alert('temp: ' + LocalFileSystem.TEMPORARY + '\npers: ' + LocalFileSystem.PERSISTENT + '\npath: ' + filepath)
     window.requestFileSystem(filepath, 0, function (fileSystem) {
         fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
             var options = new FileUploadOptions();

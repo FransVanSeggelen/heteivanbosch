@@ -137,6 +137,8 @@ function sendRecordedFile(){
 
             console.log('Net voor ft');
             var ft = new FileTransfer();
+            console.log('Net voor upload1:' + fileEntry.toURL());
+            console.log('Net voor upload2:' + uploadURL);
             ft.upload(fileEntry.toURL(), uploadURL, 
                 function(res){
                     $('#textSecondsLeft').html('Verzonden!');

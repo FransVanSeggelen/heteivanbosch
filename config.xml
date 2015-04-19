@@ -58,14 +58,19 @@
 
 <!-- Splash screens -->
     <!-- Android -->
-    <gap:splash src="www/res/screen/android/screen-ldpi-portrait.png"  gap:platform="android" gap:qualifier="port-ldpi" />
-    <gap:splash src="www/res/screen/android/screen-mdpi-portrait.png"  gap:platform="android" gap:qualifier="port-mdpi" />
-    <gap:splash src="www/res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:qualifier="port-hdpi" />
-    <gap:splash src="www/res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:qualifier="port-xhdpi" />
+    <platform name="android">
+        <splash src="www/res/screen/android/screen-ldpi-portrait.png" density="port-ldpi" />
+        <splash src="www/res/screen/android/screen-mdpi-portrait.png" density="port-mdpi" />
+        <splash src="www/res/screen/android/screen-hdpi-portrait.png" density="port-hdpi" />
+        <splash src="www/res/screen/android/screen-xhdpi-portrait.png" density="port-xhdpi" />
+    </platform>
+
     <!-- iOS -->
-    <gap:splash src="www/res/screen/ios/screen-iphone-portrait.png"         gap:platform="ios" width="320" height="480" />
-    <gap:splash src="www/res/screen/ios/screen-iphone-portrait-2x.png"      gap:platform="ios" width="640" height="960" />
-    <gap:splash src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" gap:platform="ios" width="640" height="1136" />
+    <platform name="ios">
+        <splash src="www/res/screen/ios/screen-iphone-portrait.png" width="320" height="480" />
+        <splash src="www/res/screen/ios/screen-iphone-portrait-2x.png" width="640" height="960" />
+        <splash src="www/res/screen/ios/screen-iphone-portrait-568h-2x.png" width="640" height="1136" />
+    </platform>
 
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">

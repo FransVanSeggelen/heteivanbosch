@@ -4,35 +4,47 @@ var maxSeconds = 15;
 var interval;
 var lastState;
 var filename = 'heteivanbosch';
+var filetype = 'audio/';
+var filepath = LocalFileSystem.PERSISTENT;
 var uploadURL = 'http://shinefestival.herokuapp.com';
 
 function initRecording() {
     console.log('initRecording');
     updateCurrentState('idle');
     updateSecondsRecordedUI();
-    if(isMobile.Android()) filename += '.amr';
-    if(isMobile.iOS()) filename += '.wav';
+    if(isMobile.Android()) {
+        filename += '.amr';
+        filetype += 'AMR';
+        filepath  = LocalFileSystem.PERSISTENT;
+    }
+    if(isMobile.iOS()) {
+        filename += '.wav';
+        filetype += 'wav';
+        filepath  = LocalFileSystem.TEMPORARY;
+    }
 
     $('#pagina3 div').on('click', function(e){
         console.log('preSwitch');
-        switch ($(this).attr('id'))
-        {
-            case 'btnStart':
-                console.log('btnStart');
-                if(lastState == 'recording') {
-                    stopRecording();
-                } else {
-                    startRecording();
-                }
-                break;
-            case 'btnPlay':
-                console.log('btnPlay');
-                playRecordedFile();
-                break;
-            case 'btnSend':
-                console.log('btnSend');
-                sendRecordedFile();
-                break;
+        if(!($(this).hasClass('not')){
+            switch ($(this).attr('id'))
+            {
+                case 'btnStart':
+                    console.log('btnStart');
+                    if(lastState == 'recording') {
+                        stopRecording();
+                    } else {
+                        startRecording();
+                    }
+                    break;
+                case 'btnPlay':
+                    console.log('btnPlay');
+                    playRecordedFile();
+                    break;
+                case 'btnSend':
+                    console.log('btnSend');
+                    sendRecordedFile();
+                    break;
+            }
         }
     });
 };
@@ -68,8 +80,8 @@ function createMedia(){
 
 function updateSecondsRecordedUI(){
     console.log('updateSecondsRecordedUI');
-    //var secondsLeft = maxSeconds - secondsRecorded;
-    var text = (secondsRecorded < 10 ? '0' : '') + secondsRecorded;
+    var secondsLeft = maxSeconds - secondsRecorded;
+    var text = (secondsLeft < 10 ? '0' : '') + secondsLeft;
     $('#textSecondsLeft').html('00:' + text);
 }
 
@@ -96,57 +108,36 @@ function playRecordedFile(){
     if(lastState != 'playing') {
         updateCurrentState('playing');
         media = createMedia();
-        media.getCurrentPosition(function(pos){alert(pos + ' sec');});
-        alert(media.getDuration());
+        media.getCurrentPosition(function(pos){console.log(pos + ' sec');});
+        console.log(media.getDuration());
         media.play();
     }
 }
 
 function sendRecordedFile(){
     console.log('sendRecordedFile');
-    updateCurrentState('idle');
+    updateCurrentState('sending');
     $('#textSecondsLeft').html('Verzenden...');
 
-    console.log('-->temp: ' + LocalFileSystem.TEMPORARY);
-    console.log('-->pers: ' + LocalFileSystem.PERSISTENT);
-    if(isMobile.iOS){
-        window.requestFileSystem(LocalFileSystem.TEMPORARY, 0, function (fileSystem) {
-            fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
-                var options = new FileUploadOptions();
-                options.fileKey = "recordedAudio";
-                options.fileName = filename;
-                options.mimeType = 'audio/wav';
-                options.chunkedMode = false;
+    window.requestFileSystem(filepath, 0, function (fileSystem) {
+        fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
+            var options = new FileUploadOptions();
+            options.fileKey = "recordedAudio";
+            options.fileName = filename;
+            options.mimeType = filetype;
+            options.chunkedMode = false;
 
-                var ft = new FileTransfer();
-                ft.upload(fileEntry.toURL(), uploadURL, 
-                    function(res){
-                        $('#textSecondsLeft').html('Verzonden!');
-                    }, function(err){
-                        $('#textSecondsLeft').html('Oops, mislukt.');
-                    }, options);
-            });
+            var ft = new FileTransfer();
+            ft.upload(fileEntry.toURL(), uploadURL, 
+                function(res){
+                    $('#textSecondsLeft').html('Verzonden!');
+                    updateCurrentState('idle');
+                }, function(err){
+                    $('#textSecondsLeft').html('Oops, mislukt.');
+                    updateCurrentState('recorded');
+                }, options);
         });
-    }
-    if(isMobile.Android){
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem) {
-            fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
-                var options = new FileUploadOptions();
-                options.fileKey = "recordedAudio";
-                options.fileName = filename;
-                options.mimeType = 'audio/amr';
-                options.chunkedMode = false;
-
-                var ft = new FileTransfer();
-                ft.upload(fileEntry.toURL(), uploadURL, 
-                    function(res){
-                        $('#textSecondsLeft').html('Verzonden!');
-                    }, function(err){
-                        $('#textSecondsLeft').html('Oops, mislukt.');
-                    }, options);
-            });
-        });
-    }
+    });
 }
 
 function updateCurrentState(status){
@@ -154,43 +145,28 @@ function updateCurrentState(status){
     lastState = status;
     switch (status){
         case 'idle':
-            $('#btnStart').prop('disabled', false);
             $('#btnStart').attr('class', 'up');
-            $('#btnPlay').prop('disabled', true);
             $('#btnPlay').attr('class', 'not');
-            $('#btnSend').prop('disabled', true);
             $('#btnSend').attr('class', 'not');
             break;
         case 'recorded':
-            $('#btnStart').prop('disabled', false);
             $('#btnStart').attr('class', 'up');
-            $('#btnPlay').prop('disabled', false);
             $('#btnPlay').attr('class', 'up');
-            $('#btnSend').prop('disabled', false);
             $('#btnSend').attr('class', 'up');
             break;
         case 'recording':
-            $('#btnStart').prop('disabled', false);
             $('#btnStart').attr('class', 'up');
-            $('#btnPlay').prop('disabled', true);
             $('#btnPlay').attr('class', 'not');
-            $('#btnSend').prop('disabled', true);
             $('#btnSend').attr('class', 'not');
             break;
         case 'playing':
-            $('#btnStart').prop('disabled', true);
             $('#btnStart').attr('class', 'not');
-            $('#btnPlay').prop('disabled', false);
             $('#btnPlay').attr('class', 'up');
-            $('#btnSend').prop('disabled', true);
             $('#btnSend').attr('class', 'not');
             break;
         case 'sending':
-            $('#btnStart').prop('disabled', true);
             $('#btnStart').attr('class', 'not');
-            $('#btnPlay').prop('disabled', true);
             $('#btnPlay').attr('class', 'not');
-            $('#btnSend').prop('disabled', true);
             $('#btnSend').attr('class', 'not');
             break;
     }

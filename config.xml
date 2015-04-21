@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "nl.avans.aii.shine.Het Ei"
+        id          = "nl.avans.aii.shine.HetEi"
         version     = "1.0.0"
         versionCode = "100">
         
@@ -10,7 +10,9 @@
     </name>
 
     <description>
-	    
+	    'Het Ei van Bosch' is een ondersteunende app bij het Shine Festival in Den Bosch, van 7 tot 17 mei 2015. Op dit festival is 'Het Ei van Bosch' een installatie waar bezoekers, bij wijze van moderne biecht, de uitgesproken zonden van zichzelf en/of van andere bezoekers kunnen aanhoren en in perspectief plaatsen.
+Met de app kun je zelf geheel anoniem een zonde inspreken en die toevertrouwen aan (= uploaden naar) het Ei. In het Ei zijn alle ingesproken zonden te beluisteren. De app heeft ook een locatiebepaling waarmee je kan zien hoe ver je nog van het ei weg bent en in welke richting het Ei is te vinden.
+De app geeft erder informatie over deze installatie, over de relatie met Shine, over Jeroen Bosch 500 en over de betrokken personen.
 	</description>
 
     <author href="http://www.heteivanbosch.tumblr.com" email="heteivanbosch@gmail.com">
@@ -43,15 +45,15 @@
 <!-- Icons -->
     <icon src="icon.png" />
     <!-- Android -->
-    <gap:icon src="www/res/icon/android/icon-36-ldpi.png"  gap:platform="android" gap:qualifier="ldpi" />
-    <gap:icon src="www/res/icon/android/icon-48-mdpi.png"  gap:platform="android" gap:qualifier="mdpi" />
-    <gap:icon src="www/res/icon/android/icon-72-hdpi.png"  gap:platform="android" gap:qualifier="hdpi" />
-    <gap:icon src="www/res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi" />
+    <icon src="www/res/icon/android/icon-36-ldpi.png"  gap:platform="android" gap:qualifier="ldpi" />
+    <icon src="www/res/icon/android/icon-48-mdpi.png"  gap:platform="android" gap:qualifier="mdpi" />
+    <icon src="www/res/icon/android/icon-72-hdpi.png"  gap:platform="android" gap:qualifier="hdpi" />
+    <icon src="www/res/icon/android/icon-96-xhdpi.png" gap:platform="android" gap:qualifier="xhdpi" />
     <!-- iOS -->
-    <gap:icon src="www/res/icon/ios/icon-57.png"    gap:platform="ios" width="57"  height="57" />
-    <gap:icon src="www/res/icon/ios/icon-72.png"    gap:platform="ios" width="72"  height="72" />
-    <gap:icon src="www/res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114" />
-    <gap:icon src="www/res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144" />
+    <icon src="www/res/icon/ios/icon-57.png"    gap:platform="ios" width="57"  height="57" />
+    <icon src="www/res/icon/ios/icon-72.png"    gap:platform="ios" width="72"  height="72" />
+    <icon src="www/res/icon/ios/icon-57-2x.png" gap:platform="ios" width="114" height="114" />
+    <icon src="www/res/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144" />
 
 <!-- Splash screens -->
     <gap:splash src="splash.png" />

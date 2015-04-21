@@ -116,7 +116,6 @@ nav div {
 
 .down {background-color: #e4087d;}
 .up   {background-color: #f0f0f0;}
-.not  {background-color: #999999;}
 
 .show {display: block;}
 .hide {display: none;}
@@ -167,6 +166,10 @@ nav div {
 }
 #btnSend.down {
 	background-image: url("../img/icon/record_sending.svg");
+}
+.not  {
+	background-color: #f63996;
+	border-color: #f63996;
 }
 
 /* Pagina 4: weizer ---------------------------------------------------------*/

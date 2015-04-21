@@ -149,7 +149,7 @@ function updateCurrentState(status){
             break;
         case 'playing':
             $('#btnStart').attr('class', 'not');
-            $('#btnPlay').attr('class', 'up');
+            $('#btnPlay').attr('class', 'down');
             $('#btnSend').attr('class', 'not');
             break;
         case 'sending':

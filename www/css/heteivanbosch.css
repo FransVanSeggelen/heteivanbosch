@@ -163,6 +163,7 @@ nav div {
 }
 #btnPlay.down {
 	background-image: url("../img/icon/record_pause.svg");
+	background-color: #f0f0f0;
 }
 #btnSend.down {
 	background-image: url("../img/icon/record_sending.svg");

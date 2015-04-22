@@ -51,10 +51,11 @@ function initRecording() {
 function startRecording(){
     updateCurrentState('recording');
     seconds = maxSeconds;
+	updateSecondsUI();
     interval = setInterval(function(){
-        updateSecondsUI();
         seconds--;
-        if(seconds < 0){
+        updateSecondsUI();
+        if(seconds <= 0){
             stopRecording();
         }
     }, 1000);
@@ -100,10 +101,11 @@ function stopRecording(){
 
 function startPlaying(){
 	seconds = 0;
+	updateSecondsUI();
 	interval = setInterval(function(){
-		updateSecondsUI();
 		seconds++;
-		if(seconds > secondsRecorded){
+		updateSecondsUI();
+		if(seconds >= secondsRecorded){
 			stopPlaying();
 		}
 	}, 1000);

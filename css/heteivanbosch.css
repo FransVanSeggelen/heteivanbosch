@@ -212,12 +212,17 @@ nav .up   {background-color: #f0f0f0;}
 }
 
 /* Pagina 5: colofon --------------------------------------------------------*/
+#pagina4 img {
+	display: inline-block;
+	float: right;
+	width: 40vmin;
+}
 ul {
 	list-style: none;
 }
 
 li {
-	font-size: 3vh;
+	font-size: 3.5vh;
 /*	margin-bottom: 1vh;*/
 	margin-left: 3vw;
 }

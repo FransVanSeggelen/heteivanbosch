@@ -5,7 +5,7 @@ var comObject;
 var myHeading = 0;
 
 // Wait for device to be ready loading everything
-function loadScript() {
+$(document).ready(function() {
 	isMobile = {
 		Android: function() { return navigator.userAgent.match(/Android/i); }, 
 		BlackBerry: function() { return navigator.userAgent.match(/BlackBerry/i); }, 
@@ -22,11 +22,16 @@ function loadScript() {
 };
 
 function onDeviceReady(){
-    $('#btnEi').on('click', pagina1Show());
-    $('#btnShine').on('click', pagina2Show());
-    $('#btnMic').on('click', pagina3Show());
-    $('#btnKompas').on('click', pagina4Show());
-    $('#btnColofon').on('click', pagina5Show());
+    $('#btnEi').on('click', pagina1Show);
+    $('#btnShine').on('click', pagina2Show);
+    $('#btnMic').on('click', pagina3Show);
+    $('#btnKompas').on('click', pagina4Show);
+    $('#btnColofon').on('click', pagina5Show);
+//	document.getElementById('btnEi').addEventListener('mouseup', pagina1Show, false);
+//	document.getElementById('btnShine').addEventListener('mouseup', pagina2Show, false);
+//	document.getElementById('btnMic').addEventListener('mouseup', pagina3Show, false);
+//	document.getElementById('btnKompas').addEventListener('mouseup', pagina4Show, false);
+//	document.getElementById('btnColofon').addEventListener('mouseup', pagina5Show, false);
 	initRecording();
 };
 

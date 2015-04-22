@@ -94,9 +94,8 @@ function stopRecording(){
 }
 
 function playRecordedFile(){
-    if(lastState = 'playing') {
+    if(media) {
         updateCurrentState('recorded');
-        media = createMedia();
 		media.stop();
         media.release();
 	}else{

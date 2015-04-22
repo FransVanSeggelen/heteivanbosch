@@ -97,7 +97,6 @@ function playRecordedFile(){
     if(media) {
         updateCurrentState('recorded');
 		media.stop();
-        media.release();
 	}else{
         updateCurrentState('playing');
         media = createMedia();

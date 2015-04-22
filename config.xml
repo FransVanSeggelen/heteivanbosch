@@ -18,6 +18,9 @@ De app geeft verder informatie over deze installatie, over de relatie met Shine,
     <author href="http://www.heteivanbosch.tumblr.com" email="heteivanbosch@gmail.com">
         Luuk Marschalk, Boudewijn Naaijkens, Frans van Seggelen
 	</author>
+	
+	<gap:platform name="Android" />
+	<gap:platform name="iOS" />
 
 <!-- Preferences -->
     <preference name="permissions" value="none" />

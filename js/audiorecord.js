@@ -49,6 +49,8 @@ function initRecording() {
 };
 
 function startRecording(){
+    secondsRecorded = 0;
+	updateSecondsRecordedUI();
     updateCurrentState('recording');
     media = createMedia();
     media.startRecord();
@@ -90,7 +92,6 @@ function stopRecording(){
     updateCurrentState('recorded');
     secondsRecorded = maxSeconds - secondsRecorded;
     updateSecondsRecordedUI();
-    secondsRecorded = 0;
     if(media){
         media.stopRecord();
         media.release();

@@ -143,19 +143,19 @@ function updateCurrentState(status){
             $('#btnSend').attr('class', 'up');
             break;
         case 'recording':
-            $('#btnStart').attr('class', 'up');
+            $('#btnStart').attr('class', 'down');
             $('#btnPlay').attr('class', 'not');
             $('#btnSend').attr('class', 'not');
             break;
         case 'playing':
             $('#btnStart').attr('class', 'not');
-            $('#btnPlay').attr('class', 'up');
+            $('#btnPlay').attr('class', 'down');
             $('#btnSend').attr('class', 'not');
             break;
         case 'sending':
             $('#btnStart').attr('class', 'not');
             $('#btnPlay').attr('class', 'not');
-            $('#btnSend').attr('class', 'not');
+            $('#btnSend').attr('class', 'down');
             break;
     }
 }

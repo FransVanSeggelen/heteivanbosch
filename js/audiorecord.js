@@ -58,7 +58,6 @@ function startRecording(){
 }
 
 function createMedia(){
-    console.log('createMedia');
     return new Media(filename, 
         function(){
             if(lastState == 'playing'){
@@ -97,6 +96,7 @@ function stopRecording(){
 function playRecordedFile(){
     if(lastState = 'playing') {
         updateCurrentState('recorded');
+        media = createMedia();
 		media.stop();
         media.release();
 	}else{

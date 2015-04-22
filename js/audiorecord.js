@@ -34,7 +34,11 @@ function initRecording() {
                     }
                     break;
                 case 'btnPlay':
-                    playRecordedFile();
+                    if(lastState == 'playing') {
+                        stopPlaying();
+                    } else {
+                        startPlaying();
+                    }
                     break;
                 case 'btnSend':
                     sendRecordedFile();
@@ -85,25 +89,28 @@ function stopRecording(){
     }
     updateCurrentState('recorded');
     secondsRecorded = 0;
-    updateSecondsRecordedUI();
+//    updateSecondsRecordedUI();
     if(media){
         media.stopRecord();
         media.release();
-        media = undefined;
+//        media = undefined;
     }
 }
 
-function playRecordedFile(){
-    if(media) {
-        updateCurrentState('recorded');
-		media.stop();
-	}else{
+function startPlaying(){
+    if(lastState != 'playing') {
         updateCurrentState('playing');
         media = createMedia();
         // media.getCurrentPosition(function(pos){console.log(pos + ' sec');});
         // console.log(media.getDuration());
         media.play();
     }
+}
+function stopPlaying(){
+    if(media) {
+        updateCurrentState('recorded');
+		media.stop();
+	}
 }
 
 function sendRecordedFile(){

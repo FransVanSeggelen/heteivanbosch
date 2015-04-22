@@ -32,7 +32,7 @@ De app geeft verder informatie over deze installatie, over de relatie met Shine,
     <preference name="stay-in-webview" value="false" />
     <preference name="detect-data-types" value="false" />
     <preference name="exit-on-suspend" value="false" />
-    <preference name="android-minSdkVersion" value="4.4.4" />
+    <preference name="android-minSdkVersion" value="19" />
     <preference name="SplashScreen" value="splash" />
     <preference name="SplashScreenDelay" value="2000" />
 

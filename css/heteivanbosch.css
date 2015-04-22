@@ -18,6 +18,12 @@
 	font-weight: 300;
 	line-height: 4.8vh;
 	color: #f0f0f0;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-callout: none;
+	-webkit-touch-callout: none;
+	user-drag: none;
+	-webkit-user-drag: none;
 }
 
 html, body {

@@ -19,7 +19,7 @@ $(document).ready(function() {
 	} else {
 		onDeviceReady();
 	};
-};
+});
 
 function onDeviceReady(){
     $('#btnEi').on('click', function() {pagina1Show()});

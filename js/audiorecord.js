@@ -106,6 +106,13 @@ function startPlaying(){
         // media.getCurrentPosition(function(pos){console.log(pos + ' sec');});
         // console.log(media.getDuration());
         media.play();
+		interval = setInterval(function(){
+			secondsRecorded++;
+			updateSecondsRecordedUI();
+			if(secondsRecorded >= maxSeconds){
+				stopRecording();
+			}
+		}, 1000);
     }
 }
 function stopPlaying(){

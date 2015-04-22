@@ -136,7 +136,7 @@ function geoError(error){
 	console.log('geoError: ' + error.code + '=\n' + error.message);
 }
 function comSuccess(heading){
-	myHeading = -heading.trueHeading;
+	myHeading = -heading.magneticHeading;
 	$('#kompas').css({transform: 'rotateZ(' + myHeading + 'deg)'});
 	 var comText  = 'Magnetic heading: ' + heading.magneticHeading;
 	 	comText += '<br>trueHeading: ' + heading.trueHeading;

@@ -212,13 +212,19 @@ nav .up   {background-color: #f0f0f0;}
 }
 
 /* Pagina 5: colofon --------------------------------------------------------*/
-#pagina4 img {
+h3 img {
 	display: inline-block;
 	float: right;
 	width: 40vmin;
 }
+li img {
+	display: inline-block;
+	float: right;
+	width: 20vmin;
+}
 ul {
 	list-style: none;
+	margin-bottom: 4vh;
 }
 
 li {

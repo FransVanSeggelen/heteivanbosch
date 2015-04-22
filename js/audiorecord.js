@@ -50,8 +50,6 @@ function initRecording() {
 
 function startRecording(){
     updateCurrentState('recording');
-    media = createMedia();
-    media.startRecord();
     seconds = maxSeconds;
     interval = setInterval(function(){
         updateSecondsUI();
@@ -60,6 +58,8 @@ function startRecording(){
             stopRecording();
         }
     }, 1000);
+    media = createMedia();
+    media.startRecord();
 }
 
 function createMedia(){
@@ -99,13 +99,6 @@ function stopRecording(){
 }
 
 function startPlaying(){
-    if(lastState != 'playing') {
-        updateCurrentState('playing');
-        media = createMedia();
-        // media.getCurrentPosition(function(pos){console.log(pos + ' sec');});
-        // console.log(media.getDuration());
-        media.play();
-    }
 	seconds = 0;
 	interval = setInterval(function(){
 		updateSecondsUI();
@@ -114,6 +107,13 @@ function startPlaying(){
 			stopPlaying();
 		}
 	}, 1000);
+    if(lastState != 'playing') {
+        updateCurrentState('playing');
+        media = createMedia();
+        // media.getCurrentPosition(function(pos){console.log(pos + ' sec');});
+        // console.log(media.getDuration());
+        media.play();
+    }
 }
 function stopPlaying(){
     if(media) {

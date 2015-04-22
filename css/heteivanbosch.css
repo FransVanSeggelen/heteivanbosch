@@ -154,7 +154,7 @@ nav .up   {background-color: #f0f0f0;}
 	background-image: url("../img/record/not_record.svg");
 }
 
-#textSecondsLeft {
+#seconds {
 	font-size: 6vh;
 }
 

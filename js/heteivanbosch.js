@@ -27,11 +27,6 @@ function onDeviceReady(){
     $('#btnMic').on('click', function() {pagina3Show()});
     $('#btnKompas').on('click', function() {pagina4Show()});
     $('#btnColofon').on('click', function() {pagina5Show()});
-//	document.getElementById('btnEi').addEventListener('mouseup', pagina1Show, false);
-//	document.getElementById('btnShine').addEventListener('mouseup', pagina2Show, false);
-//	document.getElementById('btnMic').addEventListener('mouseup', pagina3Show, false);
-//	document.getElementById('btnKompas').addEventListener('mouseup', pagina4Show, false);
-//	document.getElementById('btnColofon').addEventListener('mouseup', pagina5Show, false);
 	initRecording();
 };
 
@@ -117,11 +112,11 @@ function geoSuccess(geoPosition){
 
 	$('#weizer').css({transform: 'rotateZ(' + eiBearing + 'deg)'});
 
-	 var geoText  = 'Latitude: ' + geoPosition.coords.latitude;
-	 	geoText += '\n<br>Longitude: ' + geoPosition.coords.longitude;
-	 	geoText += '\n<br>gpsBearing: ' + gpsBearing;
-	 	geoText += '\n<br>eiBearing: ' + eiBearing;
-	 $('#geo').html(geoText);
+//	 var geoText  = 'Latitude: ' + geoPosition.coords.latitude;
+//	 	geoText += '\n<br>Longitude: ' + geoPosition.coords.longitude;
+//	 	geoText += '\n<br>gpsBearing: ' + gpsBearing;
+//	 	geoText += '\n<br>eiBearing: ' + eiBearing;
+//	 $('#geo').html(geoText);
 }
 function toRadians(degrees) {
 	return degrees * Math.PI/180;
@@ -130,22 +125,22 @@ function toDegrees(radians) {
 	return radians * 180/Math.PI;
 }
 function geoError(error){
-	var msg = 'Controleer of plaatsbepaling op jouw smartphone AAN staat en dat je een goed bereik hebt.'
+	var msg = 'Het Ei kan even niet jouw plaats bepalen. Probeer zo nog eens.'
 			+ '\n(' + error.code + ': ' + error.message + ')';
-	navigator.notification.alert(msg, alertCB, 'Locatie fout', 'Oops');
+	navigator.notification.alert(msg, alertCB, 'Locatie fout', 'Sorry');
 	console.log('geoError: ' + error.code + '=\n' + error.message);
 }
 function comSuccess(heading){
 	myHeading = -heading.magneticHeading;
 	$('#kompas').css({transform: 'rotateZ(' + myHeading + 'deg)'});
-	 var comText  = 'Magnetic heading: ' + heading.magneticHeading;
-	 	comText += '<br>trueHeading: ' + heading.trueHeading;
-	 $('#com').html(comText);
+//	 var comText  = 'Magnetic heading: ' + heading.magneticHeading;
+//	 	comText += '<br>trueHeading: ' + heading.trueHeading;
+//	 $('#com').html(comText);
 }
 function comError(error){
-	var msg = 'Controleer of plaatsbepaling op jouw smartphone AAN staat en dat je een goed bereik hebt.'
+	var msg = 'Het Ei kan even niet jouw kompas gebruiken. Probeer zo nog eens.'
 			+ '\n(' + error.code + ': ' + error.message + ')';
-	navigator.notification.alert(msg, alertCB, 'Kompas fout', 'Oops');
+	navigator.notification.alert(msg, alertCB, 'Kompas fout', 'Sorry');
 	console.log('comError: ' + error.code + '=\n' + error.message);
 }
 function alertCB() {

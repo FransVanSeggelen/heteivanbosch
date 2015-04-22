@@ -1,4 +1,5 @@
 var media;
+var seconds = 0;
 var secondsRecorded = 0;
 var maxSeconds = 15;
 var interval;
@@ -10,7 +11,6 @@ var uploadURL = 'http://shinefestival.herokuapp.com';
 
 function initRecording() {
     updateCurrentState('idle');
-    updateSecondsRecordedUI();
     if(isMobile.Android()) {
         filename += '.amr';
         filetype += 'AMR';
@@ -49,15 +49,14 @@ function initRecording() {
 };
 
 function startRecording(){
-    secondsRecorded = 0;
-	updateSecondsRecordedUI();
     updateCurrentState('recording');
     media = createMedia();
     media.startRecord();
+    seconds = maxSeconds;
     interval = setInterval(function(){
-        secondsRecorded++;
-        updateSecondsRecordedUI();
-        if(secondsRecorded >= maxSeconds){
+        updateSecondsUI();
+        seconds--;
+        if(seconds < 0){
             stopRecording();
         }
     }, 1000);
@@ -71,7 +70,7 @@ function createMedia(){
             }
         }, 
         function(error){
-            var msg = 'Het Ei kan media niet gebruiken.'
+            var msg = 'Het Ei kan jouw media even niet gebruiken. Probeer zo nog eens.'
                     + '\n(' + error.code + ': ' + error.message + ')';
             navigator.notification.alert(msg, alertCB, 'Media fout', 'Sorry');
             console.log('mediaError: ' + error.code + '=\n' + error.message);
@@ -79,24 +78,24 @@ function createMedia(){
     );
 };
 
-function updateSecondsRecordedUI(){
-    var secondsLeft = maxSeconds - secondsRecorded;
-    var text = (secondsLeft < 10 ? '0' : '') + secondsLeft;
-    $('#textSecondsLeft').html('00:' + text);
+function updateSecondsUI(){
+    var text = (seconds < 10 ? '0' : '') + seconds;
+    $('#seconds').html('00:' + text);
 }
 
 function stopRecording(){
+    if(media){
+        media.stopRecord();
+        media.release();
+        media = undefined;
+    }
     if(interval){
         clearInterval(interval);
     }
     updateCurrentState('recorded');
-    secondsRecorded = maxSeconds - secondsRecorded;
-    updateSecondsRecordedUI();
-    if(media){
-        media.stopRecord();
-        media.release();
-//        media = undefined;
-    }
+	secondsRecorded = maxSeconds - seconds;
+	seconds = secondsRecorded;
+    updateSecondsUI();
 }
 
 function startPlaying(){
@@ -106,25 +105,31 @@ function startPlaying(){
         // media.getCurrentPosition(function(pos){console.log(pos + ' sec');});
         // console.log(media.getDuration());
         media.play();
-		interval = setInterval(function(){
-			secondsRecorded++;
-			updateSecondsRecordedUI();
-			if(secondsRecorded >= maxSeconds){
-				stopRecording();
-			}
-		}, 1000);
     }
+	seconds = 0;
+	interval = setInterval(function(){
+		updateSecondsUI();
+		seconds++;
+		if(seconds > secondsRecorded){
+			stopPlaying();
+		}
+	}, 1000);
 }
 function stopPlaying(){
     if(media) {
-        updateCurrentState('recorded');
 		media.stop();
 	}
+    if(interval){
+        clearInterval(interval);
+    }
+	updateCurrentState('recorded');
+	seconds = secondsRecorded;
+    updateSecondsUI();
 }
 
 function sendRecordedFile(){
     updateCurrentState('sending');
-    $('#textSecondsLeft').html('Verzenden...');
+    $('#seconds').html('Verzenden...');
 
     window.requestFileSystem(filepath, 0, function (fileSystem) {
         fileSystem.root.getFile(filename, { create: false, exclusive: false }, function(fileEntry){
@@ -137,10 +142,10 @@ function sendRecordedFile(){
             var ft = new FileTransfer();
             ft.upload(fileEntry.toURL(), uploadURL, 
                 function(res){
-                    $('#textSecondsLeft').html('Verzonden!');
+                    $('#seconds').html('Verzonden!');
                     updateCurrentState('idle');
                 }, function(err){
-                    $('#textSecondsLeft').html('Oops, mislukt.');
+                    $('#seconds').html('Oops, mislukt.');
                     updateCurrentState('recorded');
                 }, options);
         });

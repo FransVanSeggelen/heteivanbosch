@@ -22,11 +22,11 @@ $(document).ready(function() {
 };
 
 function onDeviceReady(){
-    $('#btnEi').on('click', pagina1Show);
-    $('#btnShine').on('click', pagina2Show);
-    $('#btnMic').on('click', pagina3Show);
-    $('#btnKompas').on('click', pagina4Show);
-    $('#btnColofon').on('click', pagina5Show);
+    $('#btnEi').on('click', function() {pagina1Show});
+    $('#btnShine').on('click', function() {pagina2Show});
+    $('#btnMic').on('click', function() {pagina3Show});
+    $('#btnKompas').on('click', function() {pagina4Show});
+    $('#btnColofon').on('click', function() {pagina5Show});
 //	document.getElementById('btnEi').addEventListener('mouseup', pagina1Show, false);
 //	document.getElementById('btnShine').addEventListener('mouseup', pagina2Show, false);
 //	document.getElementById('btnMic').addEventListener('mouseup', pagina3Show, false);

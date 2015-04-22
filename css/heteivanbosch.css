@@ -138,10 +138,13 @@ nav .up   {background-color: #f0f0f0;}
 	background-repeat: no-repeat;
 	background-position: center;
 	margin: 3vh auto;
-	background-image: url("../img/record/record_start.svg");
+	background-image: url("../img/record/up_record.svg");
 }
 #btnStart.down {
-	background-image: url("../img/record/record_pause.svg");
+	background-image: url("../img/record/down_pause.svg");
+}
+#btnStart.not {
+	background-image: url("../img/record/not_record.svg");
 }
 
 #textSecondsLeft {
@@ -157,19 +160,24 @@ nav .up   {background-color: #f0f0f0;}
 }
 #btnPlay {
 	float: left;
-	background-image: url("../img/record/record_play.svg");
+	background-image: url("../img/record/up_play.svg");
+}
+#btnPlay.down {
+	background-image: url("../img/record/down_pause.svg");
+}
+#btnPlay.not {
+	background-image: url("../img/record/not_play.svg");
 }
 #btnSend {
 	float: right;
-	background-image: url("../img/record/record_send.svg");
-}
-#btnPlay.down {
-	background-image: url("../img/record/record_pause.svg");
+	background-image: url("../img/record/up_send.svg");
 }
 #btnSend.down {
-	background-image: url("../img/record/record_sending.svg");
+	background-image: url("../img/record/down_send.svg");
 }
-.not  {background-color: #f63996;}
+#btnSend.not {
+	background-image: url("../img/record/not_send.svg");
+}
 
 /* Pagina 4: weizer ---------------------------------------------------------*/
 #pagina4 p {

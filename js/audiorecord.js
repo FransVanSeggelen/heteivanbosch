@@ -95,7 +95,11 @@ function stopRecording(){
 }
 
 function playRecordedFile(){
-    if(lastState != 'playing') {
+    if(lastState = 'playing') {
+        updateCurrentState('recorded');
+		media.stop();
+        media.release();
+	}else{
         updateCurrentState('playing');
         media = createMedia();
         // media.getCurrentPosition(function(pos){console.log(pos + ' sec');});

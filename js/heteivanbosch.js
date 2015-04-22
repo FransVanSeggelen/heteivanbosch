@@ -68,7 +68,7 @@ function clearGeo(){
 	navigator.compass.clearWatch(comObject);
 	$('#kompas').css({transform: 'rotateZ(0deg)'});
 	$('#weizer').css({transform: 'rotateZ(0deg)'});
-	$('#afstand').html('geen info');
+	$('#afstand').html('afstand');
 	$('#geo').html('');
 	$('#com').html('');
 };

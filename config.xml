@@ -19,8 +19,8 @@ De app geeft verder informatie over deze installatie, over de relatie met Shine,
         Luuk Marschalk, Boudewijn Naaijkens, Frans van Seggelen
 	</author>
 	
-	<platform name="Android" />
-	<platform name="iOS" />
+	<gap:platform name="android" />
+	<gap:platform name="ios" />
 
 <!-- Preferences -->
     <preference name="permissions" value="none" />

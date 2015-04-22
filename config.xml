@@ -2,9 +2,9 @@
 <widget xmlns       = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "nl.avans.aii.shine.HetEi"
-        version     = "1.0.0"
-        versionCode = "100">
-        
+        version     = "1.0.1"
+        versionCode = "101">
+
     <name>
         Het Ei
     </name>

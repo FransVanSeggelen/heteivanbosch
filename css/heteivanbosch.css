@@ -82,7 +82,7 @@ nav {
 	height: 13vh;
 }
 
-nav div {
+nav>div {
 	position: fixed;
 	bottom: 0;
 	height: 10vh;
@@ -93,30 +93,35 @@ nav div {
 	background-position: center;
 }
 
-#btnEi {background-image: url("../img/icon/up_ei.svg"); left: 0vw;}
-#btnEi.down {background-image: url("../img/icon/down_ei.svg");}
-#btnShine {background-image: url("../img/icon/up_shine.svg"); left: 20vw;}
-#btnShine.down {background-image: url("../img/icon/down_shine.svg");}
-#btnMic {background-image: url("../img/icon/up_mic.svg"); left: 40vw;
-	background-size: 13vh;
+#btnEi {background-image: url("../img/nav/up_ei.svg"); left: 0vw;}
+#btnEi.down {background-image: url("../img/nav/down_ei.svg");}
+#btnShine {background-image: url("../img/nav/up_shine.svg"); left: 20vw;}
+#btnShine.down {background-image: url("../img/nav/down_shine.svg");}
+#micwrap {
+	left: 40vw;
 	height: 13vh;
-	border-radius: 3vh 3vh 0 0;
-	border-width: 1.5vw 1.5vw 0;
-	border-style: solid;
-	border-color: #f0f0f0;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
+	background-color: #f0f0f0;
+	border-top-left-radius: 3vh;
+	border-top-right-radius: 3vh;
 }
-#btnMic.down {background-image: url("../img/icon/down_mic.svg");}
-#btnKompas {background-image: url("../img/icon/up_kompas.svg"); left: 60vw;}
-#btnKompas.down {background-image: url("../img/icon/down_kompas.svg");}
-#btnColofon {background-image: url("../img/icon/up_colofon.svg"); left: 80vw;}
-#btnColofon.down {background-image: url("../img/icon/down_colofon.svg");}
+#btnMic {
+	position: absolute;
+	top:1vh;left:1vh;right:1vh;bottom:0;
+	border-top-left-radius: 2vh;
+	border-top-right-radius: 2vh;
+	background-image: url("../img/nav/up_mic.svg"); 
+	background-size: 13vh;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#btnMic.down {background-image: url("../img/nav/down_mic.svg");}
+#btnKompas {background-image: url("../img/nav/up_kompas.svg"); left: 60vw;}
+#btnKompas.down {background-image: url("../img/nav/down_kompas.svg");}
+#btnColofon {background-image: url("../img/nav/up_colofon.svg"); left: 80vw;}
+#btnColofon.down {background-image: url("../img/nav/down_colofon.svg");}
 
-.down {background-color: #e4087d;}
-.up   {background-color: #f0f0f0;}
-.not  {background-color: #999999;}
+nav .down {background-color: #e4087d;}
+nav .up   {background-color: #f0f0f0;}
 
 .show {display: block;}
 .hide {display: none;}
@@ -127,18 +132,16 @@ nav div {
 }
 
 #btnStart {
-	width: 44vmin;
-	height: 44vmin;
-	border-radius: 25vmin;
-	background-size: 60vmin;
+	width: 50vmin;
+	height: 50vmin;
+	background-size: 50vmin;
 	background-repeat: no-repeat;
 	background-position: center;
 	margin: 3vh auto;
-	background-image: url("../img/icon/up_mic.svg");
-	border: 3vmin solid #f0f0f0;
+	background-image: url("../img/record/record_start.svg");
 }
 #btnStart.down {
-	background-image: url("../img/icon/down_mic.svg");
+	background-image: url("../img/record/record_pause.svg");
 }
 
 #textSecondsLeft {
@@ -146,28 +149,27 @@ nav div {
 }
 
 #btnPlay, #btnSend {
-	width: 17vmin;
-	height: 17vmin;
-	border-radius: 10vmin;
-	background-size: 17vmin;
+	width: 20vmin;
+	height: 20vmin;
+	background-size: 20vmin;
 	background-repeat: no-repeat;
 	background-position: center;
-	border: 1.5vmin solid #f0f0f0;
 }
 #btnPlay {
 	float: left;
-	background-image: url("../img/icon/record_play.svg");
+	background-image: url("../img/record/record_play.svg");
 }
 #btnSend {
 	float: right;
-	background-image: url("../img/icon/record_send.svg");
+	background-image: url("../img/record/record_send.svg");
 }
 #btnPlay.down {
-	background-image: url("../img/icon/record_pause.svg");
+	background-image: url("../img/record/record_pause.svg");
 }
 #btnSend.down {
-	background-image: url("../img/icon/record_sending.svg");
+	background-image: url("../img/record/record_sending.svg");
 }
+.not  {background-color: #f63996;}
 
 /* Pagina 4: weizer ---------------------------------------------------------*/
 #pagina4 p {

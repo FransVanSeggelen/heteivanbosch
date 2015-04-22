@@ -88,8 +88,9 @@ function stopRecording(){
         clearInterval(interval);
     }
     updateCurrentState('recorded');
+    secondsRecorded = maxSeconds - secondsRecorded;
+    updateSecondsRecordedUI();
     secondsRecorded = 0;
-//    updateSecondsRecordedUI();
     if(media){
         media.stopRecord();
         media.release();

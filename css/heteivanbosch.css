@@ -71,8 +71,13 @@ section {
 }
 
 p {
-	text-align: justify;
 	margin-bottom: 1vh;
+}
+.just {
+	text-align: justify;
+}
+.center {
+	text-align: center;
 }
 
 nav {
@@ -126,11 +131,12 @@ nav .up   {background-color: #f0f0f0;}
 .show {display: block;}
 .hide {display: none;}
 
-/* Pagina 3: recording ------------------------------------------------------*/
-#pagina3 p {
-	text-align: center;
+/* Pagina 2: Shine ----------------------------------------------------------*/
+#pagina2 img {
+	width: 84vw;
 }
 
+/* Pagina 3: recording ------------------------------------------------------*/
 #btnStart {
 	width: 50vmin;
 	height: 50vmin;
@@ -180,9 +186,6 @@ nav .up   {background-color: #f0f0f0;}
 }
 
 /* Pagina 4: weizer ---------------------------------------------------------*/
-#pagina4 p {
-	text-align: center;
-}
 #pagina4 div {
 	position: relative;
 	height: 50vmin;
@@ -214,7 +217,7 @@ ul {
 }
 
 li {
-	font-size: 3.5vh;
-	margin-bottom: 1vh;
+	font-size: 3vh;
+/*	margin-bottom: 1vh;*/
 	margin-left: 3vw;
 }

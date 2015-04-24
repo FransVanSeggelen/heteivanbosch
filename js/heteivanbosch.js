@@ -2,7 +2,6 @@
 var isMobile = false;
 var geoObject;
 var comObject;
-var myHeading = 0;
 
 // Wait for device to be ready loading everything
 $(document).ready(function() {
@@ -55,6 +54,7 @@ function pagina4Show() {
 	$('#pagina4').attr('class', 'show');
 	$('#btnKompas').attr('class', 'down');
 	watchGeo();
+	watchCom();
 };
 function pagina5Show() {
 	hideAll();
@@ -75,6 +75,8 @@ function clearGeo(){
 function watchGeo(){
 	var geoOptions = { maximumAge: 0, timeout: 5000, enableHighAccuracy:true};
 	geoObject = navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
+};
+function watchCom(){
 	var comOptions = { frequency: 100 }; // either set frequency or filter (= deviation)
 	comObject = navigator.compass.watchHeading(comSuccess, comError, comOptions);
 };
@@ -107,16 +109,15 @@ function geoSuccess(geoPosition){
 	var y = Math.sin(λ2-λ1) * Math.cos(φ2);
 	var x = Math.cos(φ1)*Math.sin(φ2) -
 	        Math.sin(φ1)*Math.cos(φ2)*Math.cos(λ2-λ1);
-	var gpsBearing = toDegrees(Math.atan2(y, x));
-	var eiBearing  = myHeading + gpsBearing;
+	var bearing = toDegrees(Math.atan2(y, x));
+//	Let op: dit moet misschien nog van -180tot180 naar 0tot360 ??
+	$('#weizer').css({transform: 'rotateZ(' + bearing + 'deg)'});
 
-	$('#weizer').css({transform: 'rotateZ(' + eiBearing + 'deg)'});
-
-//	 var geoText  = 'Latitude: ' + geoPosition.coords.latitude;
-//	 	geoText += '\n<br>Longitude: ' + geoPosition.coords.longitude;
-//	 	geoText += '\n<br>gpsBearing: ' + gpsBearing;
-//	 	geoText += '\n<br>eiBearing: ' + eiBearing;
-//	 $('#geo').html(geoText);
+	 var geoText  = 'Latitude: ' + geoPosition.coords.latitude;
+	 	geoText += '\n<br>Longitude: ' + geoPosition.coords.longitude;
+	 	geoText += '\n<br>gpsBearing: ' + gpsBearing;
+	 	geoText += '\n<br>eiBearing: ' + eiBearing;
+	 $('#geo').html(geoText);
 }
 function toRadians(degrees) {
 	return degrees * Math.PI/180;
@@ -131,11 +132,11 @@ function geoError(error){
 	console.log('geoError: ' + error.code + '=\n' + error.message);
 }
 function comSuccess(heading){
-	myHeading = -heading.magneticHeading;
+	var myHeading = heading.magneticHeading * -1;
 	$('#kompas').css({transform: 'rotateZ(' + myHeading + 'deg)'});
-//	 var comText  = 'Magnetic heading: ' + heading.magneticHeading;
-//	 	comText += '<br>trueHeading: ' + heading.trueHeading;
-//	 $('#com').html(comText);
+	 var comText  = 'Magnetic heading: ' + heading.magneticHeading;
+	 	comText += '<br>trueHeading: ' + heading.trueHeading;
+	 $('#com').html(comText);
 }
 function comError(error){
 	var msg = 'Het Ei kan even niet jouw kompas gebruiken. Probeer zo nog eens.'

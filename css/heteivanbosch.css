@@ -193,26 +193,31 @@ nav .up   {background-color: #f0f0f0;}
 }
 
 /* Pagina 4: weizer ---------------------------------------------------------*/
-#pagina4 div {
+#pag4wrap {
 	position: relative;
 	height: 50vmin;
-	margin: 3vh auto;
-	text-align: center;
-}
-#pagina4 img {
-	position: absolute;
 	width: 50vmin;
+	margin: 3vh auto;
+}
+#kompas {
+	position: absolute;
 	height: 50vmin;
-	top: 0;
-	left: 42vw;
-	margin-left: -25vmin;
+	width: 50vmin;
+	background-image: url("../img/kompas/kompas.svg");
+}
+#weizer {
+	position: absolute;
+	height: 50vmin;
+	width: 50vmin;
+	background-image: url("../img/kompas/weizer.svg");
 }
 #afstand {
 	position: absolute;
-	width: 84vw;
-	top: 23vmin;
+	width: 50vw;
+	top: 22vmin;
 	color: #f63996;
 	font-size: 3vh;
+	text-align: center;
 }
 #pagina4 #info {
 	text-align: left;

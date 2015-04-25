@@ -113,11 +113,10 @@ function geoSuccess(geoPosition){
 //	Let op: dit moet misschien nog van -180tot180 naar 0tot360 ??
 	$('#weizer').css({transform: 'rotateZ(' + bearing + 'deg)'});
 
-	 var geoText  = 'Latitude: ' + geoPosition.coords.latitude;
-	 	geoText += '\n<br>Longitude: ' + geoPosition.coords.longitude;
-	 	geoText += '\n<br>gpsBearing: ' + gpsBearing;
-	 	geoText += '\n<br>eiBearing: ' + eiBearing;
-	 $('#geo').html(geoText);
+//	 var geoText  = 'Latitude: ' + geoPosition.coords.latitude;
+//	 	geoText += '\n<br>Longitude: ' + geoPosition.coords.longitude;
+//	 	geoText += '\n<br>Bearing: ' + bearing;
+//	 $('#geo').html(geoText);
 }
 function toRadians(degrees) {
 	return degrees * Math.PI/180;
@@ -134,9 +133,9 @@ function geoError(error){
 function comSuccess(heading){
 	var myHeading = heading.magneticHeading * -1;
 	$('#kompas').css({transform: 'rotateZ(' + myHeading + 'deg)'});
-	 var comText  = 'Magnetic heading: ' + heading.magneticHeading;
-	 	comText += '<br>trueHeading: ' + heading.trueHeading;
-	 $('#com').html(comText);
+//	 var comText  = 'Magnetic heading: ' + heading.magneticHeading;
+//	 	comText += '<br>trueHeading: ' + heading.trueHeading;
+//	 $('#com').html(comText);
 }
 function comError(error){
 	var msg = 'Het Ei kan even niet jouw kompas gebruiken. Probeer zo nog eens.'

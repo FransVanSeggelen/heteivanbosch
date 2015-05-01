@@ -68,7 +68,7 @@ function clearGeo(){
 	navigator.compass.clearWatch(comObject);
 	$('#kompas').css({transform: 'rotateZ(0deg)'});
 	$('#weizer').css({transform: 'rotateZ(0deg)'});
-	$('#afstand').html('afstand');
+	$('#afstand').html('Zoeken...');
 	$('#geo').html('');
 	$('#com').html('');
 };
@@ -124,11 +124,12 @@ function toRadians(degrees) {
 function toDegrees(radians) {
 	return radians * 180/Math.PI;
 }
-function geoError(error){
-	var msg = 'Het Ei kan even niet jouw plaats bepalen. Probeer zo nog eens.'
-			+ '\n(' + error.code + ': ' + error.message + ')';
-	navigator.notification.alert(msg, alertCB, 'Locatie fout', 'Sorry');
-	console.log('geoError: ' + error.code + '=\n' + error.message);
+function geoError(error){	// Beter geen alert maar htmltext of geen bericht
+//	var msg = 'Het Ei kan even niet jouw plaats bepalen. Probeer zo nog eens.'
+//			+ '\n(' + error.code + ': ' + error.message + ')';
+//	navigator.notification.alert(msg, alertCB, 'Locatie fout', 'Sorry');
+//	console.log('geoError: ' + error.code + '=\n' + error.message);
+	$('#afstand').html('Zoeken...');
 }
 function comSuccess(heading){
 	var myHeading = heading.magneticHeading * -1;
@@ -137,11 +138,12 @@ function comSuccess(heading){
 //	 	comText += '<br>trueHeading: ' + heading.trueHeading;
 //	 $('#com').html(comText);
 }
-function comError(error){
-	var msg = 'Het Ei kan even niet jouw kompas gebruiken. Probeer zo nog eens.'
-			+ '\n(' + error.code + ': ' + error.message + ')';
-	navigator.notification.alert(msg, alertCB, 'Kompas fout', 'Sorry');
-	console.log('comError: ' + error.code + '=\n' + error.message);
+function comError(error){	// Beter geen alert maar htmltext of geen bericht
+//	var msg = 'Het Ei kan even niet jouw kompas gebruiken. Probeer zo nog eens.'
+//			+ '\n(' + error.code + ': ' + error.message + ')';
+//	navigator.notification.alert(msg, alertCB, 'Kompas fout', 'Sorry');
+//	console.log('comError: ' + error.code + '=\n' + error.message);
+	$('#afstand').html('Zoeken...');
 }
 function alertCB() {
 	//do nothing

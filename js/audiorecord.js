@@ -70,7 +70,7 @@ function createMedia(){
                 updateCurrentState('recorded');
             }
         }, 
-        function(error){
+        function(error){	// Beter geen alert maar htmltext of geen bericht
             var msg = 'Het Ei kan jouw media even niet gebruiken. Probeer zo nog eens.'
                     + '\n(' + error.code + ': ' + error.message + ')';
             navigator.notification.alert(msg, alertCB, 'Media fout', 'Sorry');

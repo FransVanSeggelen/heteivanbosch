@@ -6,7 +6,7 @@
         versionCode = "110">
 
     <name>
-        Het Ei
+        Het Ei van Bosch
     </name>
 
     <description>
@@ -81,7 +81,7 @@ De app geeft verder informatie over deze installatie, over de relatie met Shine,
 <gap:splash src="res/screen/ios/screen-iphone-portrait-6p.png"      gap:platform="ios" width="1242" height="2208" />
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-        <string>100</string>
+        <string>110</string>
     </gap:config-file>
 
     <access origin="*"/>
